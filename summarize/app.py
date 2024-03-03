@@ -30,8 +30,6 @@ def get_results(abs_text):
   peft_model_outputs = model.generate(input_ids=input_ids, generation_config=GenerationConfig(max_new_tokens=200, num_beams=1))
   peft_model_text_output = tokenizer.decode(peft_model_outputs[0], skip_special_tokens=True)
 
-
-  print(dash_line)
   print(f'PEFT MODEL: {peft_model_text_output}')
   
 
