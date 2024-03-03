@@ -31,6 +31,7 @@ def get_results(abs_text):
   peft_model_text_output = tokenizer.decode(peft_model_outputs[0], skip_special_tokens=True)
 
   print(f'PEFT MODEL: {peft_model_text_output}')
+  return peft_model_text_output
   
 
 
