@@ -37,4 +37,6 @@ def get_results(abs_text):
 
 print("\n\nAI formatted abstract is given below:\n")
 if st.button('summarize'):
-  get_results(txt)
+  summary=get_results(txt)
+  st.subheader("Generated Summary:")
+  st.write(summary)
