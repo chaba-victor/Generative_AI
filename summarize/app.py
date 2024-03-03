@@ -27,7 +27,7 @@ def get_results(abs_text):
   input_ids = tokenizer(prompt, return_tensors="pt").input_ids
   input_ids = input_ids.to(next(model.parameters()).device)
 
-  peft_model_outputs = model.generate(input_ids=input_ids, generation_config=GenerationConfig(max_new_tokens=200, num_beams=1))
+  peft_model_outputs = model.generate(input_ids=input_ids, generation_config=GenerationConfig(max_new_tokens=200, num_beams=1,do_sample=True, temperature=1.5))
   peft_model_text_output = tokenizer.decode(peft_model_outputs[0], skip_special_tokens=True)
 
   print(f'PEFT MODEL: {peft_model_text_output}')
