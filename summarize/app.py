@@ -8,7 +8,6 @@ from peft import PeftModel
 model = PeftModel.from_pretrained(original_model, "prompt")
 import streamlit as st
 
-
 st.title('Summarize')
 txt=st.text_area('Text to analyze', '''''')
 
