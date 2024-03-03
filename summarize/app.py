@@ -1,11 +1,12 @@
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, GenerationConfig, TrainingArguments, Trainer
 import torch
-model_name='google/flan-t5-base'
+from peft import PeftModel, PeftConfig
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
-original_model = AutoModelForSeq2SeqLM.from_pretrained(model_name, torch_dtype=torch.bfloat16)
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-from peft import PeftModel
-model = PeftModel.from_pretrained(original_model, "prompt")
+peft_model_id = "ShubhamZoro/FLan-T5-Summarize"
+config = PeftConfig.from_pretrained(peft_model_id)
+model = AutoModelForSeq2SeqLM.from_pretrained(config.base_model_name_or_path, return_dict=True, device_map='auto')
+tokenizer = AutoTokenizer.from_pretrained(config.base_model_name_or_path)
 import streamlit as st
 
 st.title('Summarize')
