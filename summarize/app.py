@@ -6,6 +6,7 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 peft_model_id = "ShubhamZoro/FLan-T5-Summarize"
 config = PeftConfig.from_pretrained(peft_model_id)
 model = AutoModelForSeq2SeqLM.from_pretrained(config.base_model_name_or_path, return_dict=True, device_map='auto')
+model = PeftModel.from_pretrained(model, peft_model_id)
 tokenizer = AutoTokenizer.from_pretrained(config.base_model_name_or_path)
 import streamlit as st
 
