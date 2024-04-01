@@ -44,7 +44,7 @@ def get_vectorstore_from_url(pdf_docs):
     text_chunks=get_text_chunks(text)
 
     #vector_store
-    vector_store=Chroma.from_documents(text_chunks,OpenAIEmbeddings(openai_api_key=api_key))
+    vector_store=Chroma.from_texts(text_chunks,OpenAIEmbeddings(openai_api_key=api_key))
     return vector_store
 
 def get_context_retriever_chain(vector_store):
